@@ -1,0 +1,34 @@
+[
+  {
+    "id": "g1",
+    "title": "Snake Retro",
+    "description": "El clásico juego de la serpiente. Sobrevive el mayor tiempo posible.",
+    "price": 4.99,
+    "genre": "Arcade",
+    "imageUrl": "https://via.placeholder.com/300x150/222/00ff00?text=Snake+Retro"
+  },
+  {
+    "id": "g2",
+    "title": "Neon Pong",
+    "description": "Una versión moderna del primer videojuego de la historia.",
+    "price": 2.99,
+    "genre": "Deportes",
+    "imageUrl": "https://via.placeholder.com/300x150/222/00ffff?text=Neon+Pong"
+  },
+  {
+    "id": "g3",
+    "title": "Space Defender",
+    "description": "Protege la galaxia de la invasión alienígena.",
+    "price": 9.99,
+    "genre": "Acción",
+    "imageUrl": "https://via.placeholder.com/300x150/222/ff00ff?text=Space+Defender"
+  },
+  {
+    "id": "g4",
+    "title": "Block Puzzle",
+    "description": "Acomoda los bloques cayendo para limpiar las líneas.",
+    "price": 5.99,
+    "genre": "Puzzle",
+    "imageUrl": "https://via.placeholder.com/300x150/222/ffff00?text=Block+Puzzle"
+  }
+]
