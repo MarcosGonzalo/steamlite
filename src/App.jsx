@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ShopProvider } from './context/ShopContext';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import GameDetail from './pages/GameDetail';
 import Cart from './pages/Cart';
@@ -22,6 +23,7 @@ function App() {
               <Route path="/play/:id" element={<Play />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </BrowserRouter>
     </ShopProvider>

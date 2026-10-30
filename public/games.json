@@ -24,13 +24,13 @@
   {
     "id": "g3",
     "title": "Space Defender",
-    "description": "Protege la órbita galáctica de una oleada implacable de destructores alienígenas. Mejora tu nave espacial, equipa torpedos de plasma y sobrevive en el espacio profundo.",
+    "description": "Defiende la galaxia de invasores alienígenas en este shooter arcade en Canvas. Controla tu nave espacial, dispara ráfagas de láser de plasma y destruye las naves enemigas.",
     "price": 9.99,
     "genre": "Acción",
-    "rating": "4.7/5",
+    "rating": "4.9/5",
     "developer": "AstroTech Interactive",
     "imageUrl": "https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=700&auto=format&fit=crop&q=80",
-    "playable": false
+    "playable": true
   },
   {
     "id": "g4",
