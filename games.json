@@ -1,0 +1,68 @@
+[
+  {
+    "id": "g1",
+    "title": "Snake Retro",
+    "description": "El clásico juego arcade de la serpiente reinventado para navegadores modernos. Come frutas, crece sin chocar contra las paredes ni contigo mismo y alcanza la puntuación más alta.",
+    "price": 4.99,
+    "genre": "Arcade",
+    "rating": "4.8/5",
+    "developer": "PixelForge Studio",
+    "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&auto=format&fit=crop&q=80",
+    "playable": true
+  },
+  {
+    "id": "g2",
+    "title": "Neon Pong",
+    "description": "El legendario Pong llevado a una atmósfera synthwave cyberpunk de alta velocidad. Enfréntate a una IA inteligente con efectos de neón, física dinámica y marcador en tiempo real.",
+    "price": 2.99,
+    "genre": "Deportes",
+    "rating": "4.9/5",
+    "developer": "CyberGlow Games",
+    "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=700&auto=format&fit=crop&q=80",
+    "playable": true
+  },
+  {
+    "id": "g3",
+    "title": "Space Defender",
+    "description": "Defiende la galaxia de invasores alienígenas en este shooter arcade en Canvas. Controla tu nave espacial, dispara ráfagas de láser de plasma y destruye las naves enemigas.",
+    "price": 9.99,
+    "genre": "Acción",
+    "rating": "4.9/5",
+    "developer": "AstroTech Interactive",
+    "imageUrl": "https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=700&auto=format&fit=crop&q=80",
+    "playable": true
+  },
+  {
+    "id": "g4",
+    "title": "Block Puzzle",
+    "description": "Un tributo hipnótico a los clásicos puzzles de caída de bloques. Pon a prueba tus reflejos mentales, encaja las piezas geométricas y limpia líneas consecutivas.",
+    "price": 5.99,
+    "genre": "Puzzle",
+    "rating": "4.6/5",
+    "developer": "Geometric Mindworks",
+    "imageUrl": "https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=700&auto=format&fit=crop&q=80",
+    "playable": false
+  },
+  {
+    "id": "g5",
+    "title": "Cyber Runner 2099",
+    "description": "Carreras frenéticas en techos de rascacielos iluminados por neón. Salta entre plataformas futuristas, esquiva drones de seguridad y escapa de la megacorporación.",
+    "price": 12.99,
+    "genre": "Acción",
+    "rating": "4.9/5",
+    "developer": "NeonCity Labs",
+    "imageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=700&auto=format&fit=crop&q=80",
+    "playable": false
+  },
+  {
+    "id": "g6",
+    "title": "Dungeon & Crypts",
+    "description": "Explora laberintos subterráneos generados proceduralmente, derrota criaturas mitológicas y recolecta tesoros legendarios en este roguelike de fantasía oscura.",
+    "price": 7.49,
+    "genre": "Aventura",
+    "rating": "4.5/5",
+    "developer": "ShadowRealm Arts",
+    "imageUrl": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=700&auto=format&fit=crop&q=80",
+    "playable": false
+  }
+]
