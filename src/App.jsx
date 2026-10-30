@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// Importaremos los componentes temporalmente (asegúrate de que los archivos existan)
-// Más adelante los llenaremos con su diseño real.
+import { ShopProvider } from './context/ShopContext';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import GameDetail from './pages/GameDetail';
 import Cart from './pages/Cart';
@@ -11,18 +10,23 @@ import Play from './pages/Play';
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* El Navbar va fuera de Routes para que se vea en toda la plataforma */}
-      <Navbar /> 
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/game/:id" element={<GameDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/play/:id" element={<Play />} />
-      </Routes>
-    </BrowserRouter>
+    <ShopProvider>
+      <BrowserRouter>
+        <div className="app-container">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/game/:id" element={<GameDetail />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/library" element={<Library />} />
+              <Route path="/play/:id" element={<Play />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </ShopProvider>
   );
 }
 

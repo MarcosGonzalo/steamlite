@@ -1,0 +1,144 @@
+/* SteamLite Global Styles - Dark Steam Theme */
+:root {
+  --steam-bg-darkest: #101216;
+  --steam-bg-dark: #171a21;
+  --steam-bg-card: #1b2838;
+  --steam-bg-hover: #223247;
+  --steam-accent-blue: #66c0f4;
+  --steam-blue-btn: #2a475e;
+  --steam-blue-btn-hover: #3b6382;
+  --steam-green: #5c7e10;
+  --steam-green-hover: #75b022;
+  --steam-green-text: #a4d007;
+  --steam-red: #cd5444;
+  --steam-text-main: #f3f4f6;
+  --steam-text-muted: #8f98a0;
+  --steam-text-blue: #c7d5e0;
+  --steam-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--steam-bg-dark);
+  color: var(--steam-text-blue);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Steam Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--steam-bg-darkest);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a475e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--steam-accent-blue);
+}
+
+/* Links & Buttons defaults */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input, select {
+  font-family: inherit;
+}
+
+/* App container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Toast Notification */
+.steam-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 6px;
+  border-left: 4px solid var(--steam-accent-blue);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.steam-toast.success {
+  border-left-color: var(--steam-green-text);
+}
+
+.steam-toast.danger {
+  border-left-color: var(--steam-red);
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-card {
+  background: linear-gradient(180deg, #1b2838 0%, #171a21 100%);
+  border: 1px solid rgba(102, 192, 244, 0.2);
+  border-radius: 8px;
+  padding: 32px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}

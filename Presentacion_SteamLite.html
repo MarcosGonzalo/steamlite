@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SteamLite - Presentación Proyecto Integrador</title>
+  <style>
+    :root {
+      --bg-dark: #101216;
+      --bg-card: #171a21;
+      --bg-panel: #1b2838;
+      --text-main: #f3f4f6;
+      --text-muted: #8f98a0;
+      --accent-blue: #66c0f4;
+      --accent-green: #5c7e10;
+      --accent-green-text: #a4d007;
+      --accent-cyan: #00f7ff;
+      --accent-red: #ff4d4d;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 20px;
+    }
+
+    /* Print styling for PDF export */
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #171a21 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide {
+        page-break-after: always;
+        break-after: page;
+        height: 100vh !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+    }
+
+    /* Top Action Bar */
+    .action-bar {
+      max-width: 1080px;
+      margin: 0 auto 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .btn {
+      background: var(--accent-green);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      background: #75b022;
+    }
+
+    /* Slide Deck Container */
+    .deck-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Single Slide (16:9 Aspect Ratio) */
+    .slide {
+      background: linear-gradient(145deg, #171a21 0%, #1b2838 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      min-height: 608px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-green-text));
+    }
+
+    /* Slide Header */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .slide-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .slide-number {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .slide-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .slide-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Slide Content Layouts */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+
+    /* Card Item inside slides */
+    .card {
+      background: rgba(23, 26, 33, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card h3 {
+      color: var(--accent-blue);
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: #c7d5e0;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .card ul {
+      margin-left: 20px;
+      color: #c7d5e0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Placeholder Box for Screenshots */
+    .image-placeholder {
+      width: 100%;
+      height: 280px;
+      background: rgba(10, 12, 16, 0.6);
+      border: 2px dashed rgba(102, 192, 244, 0.4);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--accent-blue);
+      text-align: center;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+
+    .image-placeholder span.icon {
+      font-size: 36px;
+    }
+
+    .image-placeholder span.label {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .image-placeholder span.sub {
+      color: var(--text-muted);
+      font-size: 12px;
+      max-width: 300px;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar (hidden on print) -->
+  <div class="action-bar no-print">
+    <div>
+      <strong style="color: #fff; font-size: 16px;">🎮 SteamLite — Presentación para Exposición</strong>
+      <div style="color: var(--text-muted); font-size: 12px;">Diapositivas listas para imprimir o guardar como PDF</div>
+    </div>
+    <button class="btn" onclick="window.print()">
+      🖨️ Imprimir / Guardar como PDF
+    </button>
+  </div>
+
+  <div class="deck-container">
+
+    <!-- SLIDE 1: Portada -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Proyecto Integrador — Frontend</span>
+        <span class="slide-number">01 / 07</span>
+      </div>
+      <div class="slide-body" style="flex-direction: column; justify-content: center; text-align: center;">
+        <div style="font-size: 54px; margin-bottom: 12px;">🎮</div>
+        <h1 style="font-size: 3.2rem; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px;">
+          SteamLite v2.0
+        </h1>
+        <p style="font-size: 1.3rem; color: var(--accent-blue); max-width: 700px; margin: 0 auto 24px;">
+          Plataforma SPA de Distribución Digital, Pasarela de Pago y Mini-Juegos Web
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <span style="background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 20px; font-size: 13px;">⚡ React 19 + Vite 8</span>
+          <span style="background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 20px; font-size: 13px;">🧭 React Router v7</span>
+          <span style="background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 20px; font-size: 13px;">📝 Formik + Yup</span>
+          <span style="background: rgba(255,255,255,0.08); padding: 6px 14px; border-radius: 20px; font-size: 13px;">🎨 HTML5 Canvas 2D</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Desarrollo Frontend con React</span>
+        <span>Expositores: Equipo de Desarrollo</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Arquitectura y Roles -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Estructura del Proyecto</span>
+        <span class="slide-number">02 / 07</span>
+      </div>
+      <div>
+        <h2 class="slide-title">Distribución por Roles y Arquitectura</h2>
+        <p class="slide-subtitle">División modular para minimizar conflictos en Git y optimizar el desarrollo.</p>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card" style="border-top: 3px solid #66c0f4;">
+            <h3>👤 Integrante 1: Core & Minijuegos</h3>
+            <p><strong>Responsabilidades:</strong></p>
+            <ul>
+              <li>Estructura de catálogo <code>games.json</code>.</li>
+              <li>Filtro en tiempo real por texto, géneros y ordenamiento.</li>
+              <li>Desarrollo de los 3 minijuegos (Snake, Pong, Space Defender).</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top: 3px solid #5c7e10;">
+            <h3>👤 Integrante 2: UI & Vistas</h3>
+            <p><strong>Responsabilidades:</strong></p>
+            <ul>
+              <li>Enrutamiento SPA con <code>react-router-dom v7</code>.</li>
+              <li>Componentes modulares (Navbar, Footer, GameCard).</li>
+              <li>Diseño temático oscuro inspirado en la estética oficial de Steam.</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top: 3px solid #ffaa00;">
+            <h3>👤 Integrante 3: State & Storage</h3>
+            <p><strong>Responsabilidades:</strong></p>
+            <ul>
+              <li>Estado global con <code>Context API (ShopContext)</code>.</li>
+              <li>Persistencia completa con <code>localStorage</code>.</li>
+              <li>Formulario de Checkout con <code>Formik + Yup</code> y modal de compra.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Arquitectura SPA Modular</span>
+        <span>Git Flow en rama feature/steamlite-v2</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Catálogo y Tienda -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Demostración Funcional</span>
+        <span class="slide-number">03 / 07</span>
+      </div>
+      <div>
+        <h2 class="slide-title">1. Tienda y Catálogo Interactivo</h2>
+        <p class="slide-subtitle">Exploración ágil de títulos indie con filtros y sincronización reactiva.</p>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Características Técnicas</h3>
+            <ul>
+              <li><strong>Carga asíncrona:</strong> Consumo de <code>games.json</code> con <code>useEffect</code> y control de estados de carga.</li>
+              <li><strong>Filtro multi-criterio:</strong> Búsqueda en tiempo real por coincidencia de texto en título/sinopsis y selector de género dinámico.</li>
+              <li><strong>Ordenamiento:</strong> Menor a mayor precio, mayor precio y alfabético.</li>
+              <li><strong>Tarjetas inteligentes:</strong> Reconocen si el juego ya fue comprado y cambian el botón a <em>"✓ En Biblioteca"</em>.</li>
+            </ul>
+          </div>
+          <div class="image-placeholder">
+            <span class="icon">🖼️</span>
+            <span class="label">[Espacio para Captura: Vista de la Tienda]</span>
+            <span class="sub">Pega aquí la captura del catálogo con el Hero Banner y las tarjetas de juegos.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Ruta: / (Home.jsx)</span>
+        <span>Hooks: useState, useEffect, useMemo</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Carrito y Checkout -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Demostración Funcional</span>
+        <span class="slide-number">04 / 07</span>
+      </div>
+      <div>
+        <h2 class="slide-title">2. Carrito de Compras & Pasarela</h2>
+        <p class="slide-subtitle">Simulación de pago segura y validada con Formik y Yup.</p>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Flujo y Validaciones</h3>
+            <ul>
+              <li><strong>Gestión de cesta:</strong> Añadir sin duplicados, eliminar items individuales y cálculo dinámico de totales.</li>
+              <li><strong>Validaciones estrictas (Yup):</strong>
+                <ul>
+                  <li>Tarjeta: 16 dígitos numéricos exactos (Regex).</li>
+                  <li>Titular: Mínimo 3 caracteres alfabéticos.</li>
+                  <li>Vencimiento: Formato estricto MM/AA.</li>
+                  <li>CVV: Código de seguridad de 3 dígitos.</li>
+                </ul>
+              </li>
+              <li><strong>Modal Steam:</strong> Reemplaza el <code>alert()</code> nativo con una pantalla de celebración y acceso directo a la biblioteca.</li>
+            </ul>
+          </div>
+          <div class="image-placeholder">
+            <span class="icon">💳</span>
+            <span class="label">[Espacio para Captura: Carrito y Checkout]</span>
+            <span class="sub">Pega aquí la captura del formulario de pago y el modal de compra exitosa.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Ruta: /cart (Cart.jsx)</span>
+        <span>Validación: Formik + Yup</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Mi Biblioteca -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Demostración Funcional</span>
+        <span class="slide-number">05 / 07</span>
+      </div>
+      <div>
+        <h2 class="slide-title">3. Biblioteca Personal y Persistencia</h2>
+        <p class="slide-subtitle">Almacenamiento persistente en localStorage y control de títulos adquiridos.</p>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Persistencia y Verificación</h3>
+            <ul>
+              <li><strong>Almacenamiento permanente:</strong> Las compras se guardan en <code>localStorage('steamlite_library')</code>.</li>
+              <li><strong>Anti-duplicidad:</strong> El sistema impide que un usuario compre dos veces el mismo juego.</li>
+              <li><strong>Buscador interno:</strong> Permite filtrar rápidamente entre los títulos adquiridos.</li>
+              <li><strong>Lanzamiento directo:</strong> Botón <em>"▶ Jugar Ahora"</em> que transporta al usuario directamente al motor del juego.</li>
+            </ul>
+          </div>
+          <div class="image-placeholder">
+            <span class="icon">📚</span>
+            <span class="label">[Espacio para Captura: Mi Biblioteca]</span>
+            <span class="sub">Pega aquí la captura de la pantalla de juegos adquiridos.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Ruta: /library (Library.jsx)</span>
+        <span>Persistencia: localStorage API</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Los 3 Mini-Juegos -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Motores de Juego en JavaScript</span>
+        <span class="slide-number">06 / 07</span>
+      </div>
+      <div>
+        <h2 class="slide-title">4. Mini-Juegos Integrados en Navegador</h2>
+        <p class="slide-subtitle">Tres juegos clásicos implementados en React y HTML5 Canvas 2D.</p>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card" style="text-align: center;">
+            <div style="font-size: 32px;">🐍</div>
+            <h3 style="color: #a4d007;">Snake Retro (g1)</h3>
+            <p>Motor basado en celdas matriciales, colisiones contra paredes/cuerpo, récord histórico en localStorage y controles WASD.</p>
+            <div class="image-placeholder" style="height: 140px; margin-top: 10px;">
+              <span class="icon" style="font-size: 24px;">🖼️</span>
+              <span class="sub" style="font-size: 11px;">[Captura Snake]</span>
+            </div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div style="font-size: 32px;">🏓</div>
+            <h3 style="color: #00f7ff;">Neon Pong (g2)</h3>
+            <p>Renderizado en Canvas 2D a 60 FPS, estética synthwave, física de aceleración de pelota, IA predictiva y marcador a 5 puntos.</p>
+            <div class="image-placeholder" style="height: 140px; margin-top: 10px;">
+              <span class="icon" style="font-size: 24px;">🖼️</span>
+              <span class="sub" style="font-size: 11px;">[Captura Pong]</span>
+            </div>
+          </div>
+          <div class="card" style="text-align: center;">
+            <div style="font-size: 32px;">🚀</div>
+            <h3 style="color: #ff0055;">Space Defender (g3)</h3>
+            <p>Shooter espacial con animación de estrellas en paralaje, ráfagas láser, proyectiles alienígenas, vidas y condición de victoria.</p>
+            <div class="image-placeholder" style="height: 140px; margin-top: 10px;">
+              <span class="icon" style="font-size: 24px;">🖼️</span>
+              <span class="sub" style="font-size: 11px;">[Captura Space]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Ruta: /play/:id (Play.jsx)</span>
+        <span>HTML5 Canvas 2D + requestAnimationFrame</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Conclusiones y Preguntas -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="slide-tag">Cierre de Exposición</span>
+        <span class="slide-number">07 / 07</span>
+      </div>
+      <div class="slide-body" style="flex-direction: column; justify-content: center; text-align: center;">
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #fff; margin-bottom: 16px;">
+          Conclusiones y Aprendizajes
+        </h2>
+        <div style="max-width: 780px; margin: 0 auto 30px; text-align: left; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="card">
+            <h3>✅ Objetivos Técnicos Cumplidos</h3>
+            <ul>
+              <li>Arquitectura SPA limpia y modular.</li>
+              <li>Sincronización global con Context API.</li>
+              <li>Validaciones rigurosas con Formik + Yup.</li>
+              <li>Persistencia confiable en localStorage.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🚀 Buenas Prácticas Aplicadas</h3>
+            <ul>
+              <li>Control de versiones con Git Flow.</li>
+              <li>Separación de responsabilidades.</li>
+              <li>Experiencia de usuario inmersiva tipo Steam.</li>
+              <li>Optimización con Vite y Canvas a 60 FPS.</li>
+            </ul>
+          </div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--accent-blue); font-weight: 700;">
+          ¡Muchas Gracias! ¿Preguntas del Jurado?
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>SteamLite v2.0</span>
+        <span>Fin de la Presentación</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
